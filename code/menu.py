@@ -3,9 +3,7 @@
 import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
-
 from code.Const import WIN_WIDTH, COLOR_BLACK, MENU_OPTION, C_BLUE, COLOR_ORANGE
-
 
 class Menu:
     def __init__(self, window):

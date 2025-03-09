@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import pygame.key
-from code.Const import ENTITY_SPEED, PLAYER_KEY_SPACE
+
 from code.entity import Entity
 
 class Player(Entity):

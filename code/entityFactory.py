@@ -1,8 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import pygame
-from code.Const import WIN_WIDTH, WIN_HEIGHT
+from code.Const import WIN_WIDTH
 from code.background import Background
+from code.enemy import Enemy
 from code.player import Player
 
 class EntityFactory:
@@ -34,9 +35,17 @@ class EntityFactory:
                     print(f"Error creating Player2: {e}")
                     return None
 
+            case 'EnemyCactus2':
+                return Enemy('EnemyCactus2', (0, 569))  # Ajuste na posição Y
+
+            case 'EnemyRock2':
+                return Enemy('EnemyRock2', (0, 545))  # Ajuste na posição Y
+
             case _:
                 print(f"Warning: Entity '{entity_name}' not recognized")
                 return None
+
+
 
 
 
