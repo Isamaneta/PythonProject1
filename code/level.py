@@ -5,7 +5,7 @@ import sys
 import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
-from code.Const import C_BLUE, MENU_OPTION, WIN_HEIGHT, EVENT_ENEMY
+from code.Const import C_BLUE, MENU_OPTION, WIN_HEIGHT, EVENT_ENEMY, SPAWN_TIME
 from code.entity import Entity
 from code.entityFactory import EntityFactory
 
@@ -40,7 +40,7 @@ class Level:
                 print("⚠ Erro: Falha ao criar Player2")
 
         # Configurando o timer para adicionar inimigos
-        pygame.time.set_timer(EVENT_ENEMY, 2000)  # Adicionar inimigo a cada 2 segundos
+        pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)  # Adicionar inimigo a cada 2 segundos
 
     def run(self):
         pygame.mixer_music.load(f'./asset/{self.name}.wav')

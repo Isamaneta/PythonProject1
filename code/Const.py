@@ -30,6 +30,9 @@ MENU_OPTION = (' NEW GAME 1P',
 PLAYER1 = pygame.K_SPACE
 PLAYER2 = pygame.K_UP
 
+#S
+SPAWN_TIME = 4000
+
 
 # W
 WIN_WIDTH = 920
