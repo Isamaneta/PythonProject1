@@ -1,3 +1,5 @@
+from code.player import Player
+from code.Const import PLAYER1, WIN_WIDTH
 from code.enemy import Enemy
 from code.entity import Entity
 
@@ -10,7 +12,7 @@ class EntityMediator:
                ent.health = 0
 
    @staticmethod
-   def verify_colision(entity_list: list[Entity]):
+   def verify_collision(entity_list: list[Entity]):
         for i in range(len(entity_list)):
             test_entity = entity_list[i]
             EntityMediator.__verify_collision_window(test_entity)

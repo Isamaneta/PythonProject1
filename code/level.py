@@ -1,5 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+# !/usr/bin/python
+# -*- coding: utf-8 -*-
 import random
 import sys
 import pygame
@@ -77,7 +79,7 @@ class Level:
             self.level_text(14, f'entidades: {len(self.entity_list)}', C_BLUE, (10, 20))
             pygame.display.flip()
             # Collisions
-            EntityMediator.verify_colision(entity_list=self.entity_list)
+            EntityMediator.verify_collision(entity_list=self.entity_list)
             EntityMediator.verify_health(entity_list=self.entity_list)
 
 
@@ -86,4 +88,3 @@ class Level:
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
         text_rect: Rect = text_surf.get_rect(left=text_pos[0], top=text_pos[1])
         self.window.blit(source=text_surf, dest=text_rect)
-
