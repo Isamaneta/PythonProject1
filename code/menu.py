@@ -3,7 +3,7 @@
 import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
-from code.Const import WIN_WIDTH, COLOR_BLACK, MENU_OPTION, C_BLUE, COLOR_ORANGE
+from code.Const import WIN_WIDTH, C_BLACK, MENU_OPTION, C_BLUE, C_ORANGE
 
 class Menu:
     def __init__(self, window):
@@ -19,11 +19,11 @@ class Menu:
         while True:
             # DRAW IMAGES
             self.window.blit(source=self.surf, dest=self.rect)
-            self.menu_text(50, "Desert", COLOR_BLACK, ((WIN_WIDTH / 2), 70))
+            self.menu_text(50, "Desert", C_BLACK, ((WIN_WIDTH / 2), 70))
 
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
-                    self.menu_text(15, MENU_OPTION[i], COLOR_ORANGE, ((WIN_WIDTH / 2), 150 + 30 * i))
+                    self.menu_text(15, MENU_OPTION[i], C_ORANGE, ((WIN_WIDTH / 2), 150 + 30 * i))
 
                 else:
                     self.menu_text(15, MENU_OPTION[i], C_BLUE, ((WIN_WIDTH / 2), 150 + 30 * i))

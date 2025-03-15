@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import pygame.key
-
 from code.entity import Entity
 
 class Player(Entity):
@@ -38,6 +37,8 @@ class Player(Entity):
             self.velocity_y = 0  # Reseta a velocidade
             self.is_jumping = False  # O jogador pode pular novamente
         pass
+
+
 
 
 

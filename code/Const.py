@@ -1,9 +1,12 @@
 #C
 import pygame
 
-COLOR_BLACK = (5,0,10)
+C_BLACK = (5, 0, 10)
 C_BLUE = (0,35,245)
-COLOR_ORANGE =(240,134,80)
+C_ORANGE =(240, 134, 80)
+C_WHITE = (255, 255, 255)
+
+
 
 #E
 EVENT_ENEMY =pygame.USEREVENT + 1
@@ -31,13 +34,25 @@ ENTITY_HEALTH = {
     'EnemyCactus2': 60,
 }
 
+ENTITY_DAMAGE = {
+    'Level1Bg0': 0,
+    'Level1Bg1': 0,
+    'Level1Bg2': 0,
+    'Level1Bg3': 0,
+    'Level1Bg4': 0,
+    'player1' :1,
+    'EnemyRock2':1,
+    'player2' :1,
+    'EnemyCactus2':1,
+}
+
 #M
 #C
 import pygame
 
-COLOR_BLACK = (5,0,10)
+C_BLACK = (5, 0, 10)
 C_BLUE = (0,35,245)
-COLOR_ORANGE =(240,134,80)
+C_ORANGE =(240, 134, 80)
 
 #E
 EVENT_ENEMY =pygame.USEREVENT + 1
@@ -83,5 +98,3 @@ SPAWN_TIME = 4000
 # W
 WIN_WIDTH = 920
 WIN_HEIGHT = 600
-
-

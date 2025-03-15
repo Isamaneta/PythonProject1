@@ -2,12 +2,13 @@
 # -*- coding: utf-8 -*-
 # !/usr/bin/python
 # -*- coding: utf-8 -*-
+
 import random
 import sys
 import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
-from code.Const import C_BLUE, MENU_OPTION, WIN_HEIGHT, EVENT_ENEMY, SPAWN_TIME
+from code.Const import C_BLUE, MENU_OPTION, WIN_HEIGHT, EVENT_ENEMY, SPAWN_TIME, C_WHITE
 from code.EntityMediator import EntityMediator
 from code.entity import Entity
 from code.entityFactory import EntityFactory
@@ -31,16 +32,12 @@ class Level:
         player1 = EntityFactory.get_entity('Player1', position=(0, WIN_HEIGHT - 0))  # Ajuste para o chão
         if player1:
             self.entity_list.append(player1)
-        else:
-            print("⚠ Erro: Falha ao criar Player1")
 
         # Criando o Player2 se estiver em modo multiplayer
         if game_mode in [MENU_OPTION[1], MENU_OPTION[2]]:
             player2 = EntityFactory.get_entity('Player2', position=(300, WIN_HEIGHT - 0))  # Ajuste para o chão
             if player2:
                 self.entity_list.append(player2)
-            else:
-                print("⚠ Erro: Falha ao criar Player2")
 
         # Configurando o timer para adicionar inimigos
         pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)  # Adicionar inimigo a cada 2 segundos
@@ -55,10 +52,14 @@ class Level:
 
             # Atualiza as entidades
             for ent in self.entity_list:
-                if ent is None:  # Evita erro caso alguma entidade seja None
-                    continue
                 self.window.blit(source=ent.surf, dest=ent.rect)
                 ent.move()
+                if ent.name == 'player1':
+                    self.level_text(16, f'Player1 - Health: {ent.health}', C_WHITE, (600, 10))
+                if ent.name == 'player2':
+                    self.level_text(16, f'Player2 - Health: {ent.health}', C_WHITE, (600, 30))
+
+
 
             # Verifica os eventos
             for event in pygame.event.get():
@@ -67,11 +68,10 @@ class Level:
                     sys.exit()
                 if event.type == EVENT_ENEMY:  # Se o evento de inimigo ocorrer
                     choice = random.choice(('EnemyCactus2','EnemyRock2'))
-                    new_enemy = EntityFactory.get_entity(choice)
-                    if new_enemy:
-                        self.entity_list.append(new_enemy)  # Adiciona o inimigo à lista de entidades
-                    else:
-                        print("Erro ao criar inimigo")
+                    self.entity_list.append(EntityFactory.get_entity(choice))
+
+
+
 
             # Atualiza a tela com informações
             self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', C_BLUE, (10, 5))
@@ -88,3 +88,5 @@ class Level:
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
         text_rect: Rect = text_surf.get_rect(left=text_pos[0], top=text_pos[1])
         self.window.blit(source=text_surf, dest=text_rect)
+
+
