@@ -48,8 +48,8 @@ ENTITY_HEALTH = {
     'Level1Bg4': 999,
     'player1': 10,
     'player2': 10,
-    'EnemyRock2': 5,
-    'EnemyCactus2': 6,
+    'EnemyRock2': 1,
+    'EnemyCactus2': 1,
 }
 
 
