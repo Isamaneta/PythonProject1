@@ -1,30 +1,24 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-# !/usr/bin/python
-# -*- coding: utf-8 -*-
-
 import random
 import sys
 import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
-from code.Const import C_BLUE, MENU_OPTION, WIN_HEIGHT, EVENT_ENEMY, SPAWN_TIME, C_WHITE
+from code.Const import C_BLUE, MENU_OPTION, WIN_HEIGHT, EVENT_ENEMY, SPAWN_TIME, C_WHITE, EVENT_TIMEOUT, TIMEOUT_STEP, \
+    TIMEOUT_LEVEL
 from code.EntityMediator import EntityMediator
 from code.entity import Entity
 from code.entityFactory import EntityFactory
+from code.player import Player
+
 
 class Level:
     def __init__(self, window, name, game_mode):
-        self.timeout = 20000  # 20 segundos
+        self.timeout = TIMEOUT_LEVEL
         self.window = window
         self.name = name
         self.game_mode = game_mode  # Modo de jogo
         self.entity_list: list[Entity] = []
-
-        # Criando o background
-        bg_entities = EntityFactory.get_entity('Level1Bg')
-        if bg_entities:
-            self.entity_list.extend(bg_entities)
+        self.entity_list.extend(EntityFactory.get_entity(self.name + 'Bg'))
 
         # Criando o Player1
         player1 = EntityFactory.get_entity('Player1', position=(0, WIN_HEIGHT - 0))  # Ajuste para o chão
@@ -39,6 +33,7 @@ class Level:
 
         # Configurando o timer para adicionar inimigos
         pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)
+        pygame.time.set_timer(EVENT_TIMEOUT, TIMEOUT_STEP)
 
     def run(self):
         pygame.mixer_music.load(f'./asset/{self.name}.wav')
@@ -65,8 +60,16 @@ class Level:
                 if event.type == EVENT_ENEMY:  # Se o evento de inimigo ocorrer
                     choice = random.choice(('EnemyCactus2','EnemyRock2'))
                     self.entity_list.append(EntityFactory.get_entity(choice))
-
-
+                if event.type == EVENT_TIMEOUT:
+                    self.timeout -= TIMEOUT_STEP
+                    if self.timeout == 0:
+                        return True
+                found_player = False
+                for ent in self.entity_list:
+                    if isinstance(ent, Player):
+                        found_player = True
+                if not found_player:
+                    return False
 
 
             # Atualiza a tela com informações

@@ -1,5 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 import pygame
 from code.Const import WIN_WIDTH
 from code.background import Background
@@ -13,13 +11,15 @@ class EntityFactory:
             case 'Level1Bg':
                 list_bg = []
                 for i in range(5):
-                    bg_name = f'Level1Bg{i}'
-                    try:
-                        list_bg.append(Background(bg_name, (0, 0)))
-                        list_bg.append(Background(bg_name, (WIN_WIDTH, 0)))
-                    except Exception as e:
-                        print(f"Error creating background {bg_name}: {e}")
-                return list_bg if list_bg else None
+                    list_bg.append(Background(f'Level1Bg{i}', (0, 0)))
+                    list_bg.append(Background(f'Level1Bg{i}', (WIN_WIDTH, 0)))
+                return list_bg
+            case 'Level2Bg':
+                list_bg = []
+                for i in range(5):
+                    list_bg.append(Background(f'Level2Bg{i}', (0, 0)))
+                    list_bg.append(Background(f'Level2Bg{i}', (WIN_WIDTH, 0)))
+                return list_bg
 
             case 'Player1':
                 try:
