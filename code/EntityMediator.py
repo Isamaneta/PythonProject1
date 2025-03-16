@@ -29,9 +29,6 @@ class EntityMediator:
                ent1.last_dmg = ent2.name
                ent2.last_dmg = ent1.name
 
-   @staticmethod
-   def __give_score():
-       pass
 
    @staticmethod
    def verify_collision(entity_list: list[Entity]):
@@ -48,7 +45,6 @@ class EntityMediator:
         for ent in entity_list:
             if ent.health <= 0:
                 entity_list.remove(ent)
-
 
 
 

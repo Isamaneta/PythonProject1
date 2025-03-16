@@ -32,10 +32,8 @@ ENTITY_DAMAGE = {
     'EnemyCactus2':1,
 }
 
-#M
-#C
-import pygame
 
+#C
 C_BLACK = (5, 0, 10)
 C_BLUE = (0,35,245)
 C_ORANGE =(240, 134, 80)
@@ -57,7 +55,6 @@ ENTITY_HEALTH = {
 MENU_OPTION = (' NEW GAME 1P',
                ' NEW GAME 2P - COOPERATIVE',
                ' NEW GAME 2P - COMPETITIVE',
-               ' SCORE',
                ' EXIT')
 
 #P
