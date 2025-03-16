@@ -7,14 +7,14 @@ from code.entity import Entity
 class Player(Entity):
     def __init__(self, name: str, position: tuple, jump_key):
         super().__init__(name, position)
-
         self.initial_position = position  # Posição inicial
         self.rect.topleft = position  # Ajusta a posição inicial
         self.jump_key = jump_key  # Tecla para pular
         self.is_jumping = False  # Verifica se o jogador está pulando
         self.velocity_y = 5  # Velocidade vertical
-        self.gravity = 1  # Gravidade aplicada constantemente
+        self.gravity = 0.7  # Gravidade aplicada constantemente
         self.jump_force = -30  # Força do pulo
+        self.points = 0
 
     def update(self):
         self.move()

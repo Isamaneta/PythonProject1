@@ -25,8 +25,6 @@ class Level:
         bg_entities = EntityFactory.get_entity('Level1Bg')
         if bg_entities:
             self.entity_list.extend(bg_entities)
-        else:
-            print("⚠ Erro: Falha ao criar Level1Bg")
 
         # Criando o Player1
         player1 = EntityFactory.get_entity('Player1', position=(0, WIN_HEIGHT - 0))  # Ajuste para o chão
@@ -40,7 +38,7 @@ class Level:
                 self.entity_list.append(player2)
 
         # Configurando o timer para adicionar inimigos
-        pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)  # Adicionar inimigo a cada 2 segundos
+        pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)
 
     def run(self):
         pygame.mixer_music.load(f'./asset/{self.name}.wav')
@@ -58,8 +56,6 @@ class Level:
                     self.level_text(16, f'Player1 - Health: {ent.health}', C_WHITE, (600, 10))
                 if ent.name == 'player2':
                     self.level_text(16, f'Player2 - Health: {ent.health}', C_WHITE, (600, 30))
-
-
 
             # Verifica os eventos
             for event in pygame.event.get():
